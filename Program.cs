@@ -56,10 +56,8 @@ class Player
         }
     }
 
-    static void Chercher_PT(List<string> Tableau, out List<string> table, int x1, int y1)
+    static void Chercher_PT(List<string> table, int x1, int y1)
     {
-        table = Tableau;
-
         for (int i = 0; i < table.Count; i++)
         {
             for (int j = 0; j < table[i].Length; j++)
@@ -71,11 +69,11 @@ class Player
                     table[i] = sb.Replace('0', '.', j, 1).ToString();
                     if (x2 != -1)
                     {
-                        Chercher_PT(Tableau, out table, x2, i);
+                        Chercher_PT(table,x2, i);
                     }
                     if (y3 != -1)
                     {
-                        Chercher_PT(Tableau, out table, j, y3);
+                        Chercher_PT(table,j, y3);
                     }
                 }
             }
@@ -95,6 +93,6 @@ class Player
             string line = Console.ReadLine();
             Tableau.Add(line);
         }
-        Chercher_PT(Tableau, out List<string> table, x1, y1);
+        Chercher_PT(Tableau,x1, y1);
     }
 }
